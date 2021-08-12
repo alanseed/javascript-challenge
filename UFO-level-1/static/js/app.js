@@ -36,3 +36,12 @@ function runEnter() {
     document.getElementById("datetime").value = "1/11/2011"
   }
 }
+
+var form = document.getElementById('datetime');
+form.addEventListener('keydown', function (event) {
+  let x = event.key;
+  if (x.charCodeAt(0) == 69) {
+    console.log("enter");
+    runEnter()
+  }
+});
