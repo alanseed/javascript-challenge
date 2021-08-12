@@ -8,6 +8,9 @@ var tableData = data;
 var button = d3.select("#filter-btn");
 button.on("click", runEnter); 
 
+var form = d3.select("#form"); 
+form.on("submit",runEnter);
+
 var tbody = d3.select("tbody");
 
 function runEnter() {
@@ -36,12 +39,3 @@ function runEnter() {
     document.getElementById("datetime").value = "1/11/2011"
   }
 }
-
-var form = document.getElementById('datetime');
-form.addEventListener('keydown', function (event) {
-  let x = event.key;
-  if (x.charCodeAt(0) == 69) {
-    console.log("enter");
-    runEnter()
-  }
-});
