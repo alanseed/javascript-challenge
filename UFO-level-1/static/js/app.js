@@ -18,7 +18,7 @@ function runEnter() {
 
   var inputElement = d3.select("#datetime");
   var inputValue = inputElement.property("value");
-  var tDate = DateTime.fromFormat(inputValue, "d/M/yyyy")
+  var tDate = DateTime.fromFormat(inputValue, "M/d/yyyy")
   
   // remove the existing rows in the table
   tbody.selectAll("tr").remove(); 
