@@ -14,9 +14,14 @@ document.getElementById("startDateSelector").value = startDate.toISODate();
 
 var endDate = getEndDate(data);
 document.getElementById("endDateSelector").value = endDate.toISODate();
+
+// make the list of states in the data 
 var stateList = getStateList(data);
-
-
+var stateDropDown = d3.select("#stateList"); 
+for ( let i = 0; i < stateList.length; i++ ){
+  let htmlString = '<button class=\'dropdown-item\' type=\'button\'>'+stateList[i]+'<\/button>' ;
+  stateDropDown.insert("li").html(htmlString) ;
+}
 
 function runEnter() {
   d3.event.preventDefault();
@@ -83,7 +88,7 @@ function getEndDate(data){
 } 
 
 function getStateList(data){
-  var states = [];
+  var states = ["All States"];
   for ( let i = 0; i < data.length; i++){ 
     addState(states, data[i].state); 
   }
