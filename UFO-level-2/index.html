@@ -1,77 +1,125 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8" />
+    <title>UFO Finder</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
 
-<head>
-  <meta charset="utf-8">
-  <title>UFO Finder</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
-  <style>
-    .navbar-custom {
-      background-color: cornflowerblue;
-    }
-  </style>
-
-</head>
-<body>
-  <nav class="navbar navbar-custom fixed-top"  >
-    <div class="container-fluid">
-      <a class="navbar-brand"  href="index.html" style="color: white;">
-        <img src="static/images/ufo.svg" alt="" width="30%" height="40" class="d-inline-block align-text-top">
-        UFO Reports
-      </a>
+    <style>
+      .navbar-custom {
+        background-color: cornflowerblue;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-custom fixed-top">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.html" style="color: white">
+          <img
+            src="static/images/ufo.svg"
+            alt=""
+            width="30%"
+            height="40"
+            class="d-inline-block align-text-top"
+          />
+          UFO Reports
+        </a>
+      </div>
+    </nav>
+    <div class="card">
+      <img src="static/images/nasa.jpg" alt="" />
     </div>
-  </nav>
-  <div class = "card" >
-    <img src="static/images/nasa.jpg" alt=''>
-  </div>
-    
-  <div class="card">
-    <div class="card-body"> 
-      <form >
-        <div class="row"> 
-          <div class="col-auto">
-            <label for="startDateSelector" class="form-label" >Start Date</label>
-            <input class="form-control" type="date" id = "startDateSelector" value="2010-01-01" >
-          </div>
-          <div class="col-auto">
-            <label for="endDateSelector" class="form-label" >End Date</label>
-            <input class="form-control" type="date" id = "endDateSelector" >
-          </div>
-          <div class="col-auto">
-            <div class="btn-group">
-              <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">State</button>
-              <ul class="dropdown-menu dropdown-menu-lg-start" id="stateList">
-              </ul>
+
+    <div class="card">
+      <div class="card-body">
+        <form>
+          <div class="row">
+            <div class="col-auto">
+              <label for="startDateSelector" class="form-label"
+                >Start Date</label
+              >
+              <input
+                class="form-control"
+                type="date"
+                id="startDateSelector"
+                value="2010-01-01"
+              />
+            </div>
+            <div class="col-auto">
+              <label for="endDateSelector" class="form-label">End Date</label>
+              <input class="form-control" type="date" id="endDateSelector" />
+            </div>
+            <div class="col">
+              <div class="dropdown">
+                <button
+                  class="btn btn-secondary dropdown-toggle"
+                  type="button"
+                  id="dropdownMenuButton1"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Select States
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li>
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        value="test"
+                        id="checkDefault"
+                      />
+                      <label class="form-check-label" for="checkDefault">
+                        Select all states
+                      </label>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-auto">
+              <button
+                class="btn btn-outline-primary btn-lg"
+                type="submit"
+                id="sumbitButton"
+              >
+                Search
+              </button>
             </div>
           </div>
-          <div class="col-auto">
-            <button class="btn btn-outline-primary btn-lg" type="submit" id="sumbitButton">Search</button></div>
-        </div>   
-      </form>
+        </form>
+      </div>
     </div>
-  </div>
-  <div class="card"> 
-    <div class="card-body"> 
-      <table id="ufo-table" class="table table-striped">
-        <thead>
-          <tr>
-            <th class="table-head" style="width:fit-content">Date</th>
-            <th class="table-head" style="width:fit-content">City</th>
-            <th class="table-head" style="width:fit-content">State</th>
-            <th class="table-head" style="width:fit-content">Shape</th>
-            <th class="table-head" style="width:fit-content">Duration</th>
-            <th class="table-head" style="width:50%">Comments</th>
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
+    <div class="card">
+      <div class="card-body">
+        <table id="ufo-table" class="table table-striped">
+          <thead>
+            <tr>
+              <th class="table-head" style="width: fit-content">Date</th>
+              <th class="table-head" style="width: fit-content">City</th>
+              <th class="table-head" style="width: fit-content">State</th>
+              <th class="table-head" style="width: fit-content">Shape</th>
+              <th class="table-head" style="width: fit-content">Duration</th>
+              <th class="table-head" style="width: 50%">Comments</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
     </div>
-  </div>
-  <script src = "https://cdn.jsdelivr.net/npm/luxon@2.0.2/build/global/luxon.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-  <script src="https://d3js.org/d3.v5.min.js"></script>
-  <script src="static/js/data.js"></script>
-  <script src="static/js/app.js"> </script>
-</body>
+    <script src="https://cdn.jsdelivr.net/npm/luxon@2.0.2/build/global/luxon.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="static/js/data.js"></script>
+    <script src="static/js/app.js"></script>
+  </body>
 </html>
