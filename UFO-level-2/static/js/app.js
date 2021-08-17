@@ -5,7 +5,7 @@ var DateTime = luxon.DateTime;
 var tableData = data;
 
 // Checkbox watch if all is selected 
-var checkBox = d3.select( )
+document.getElementById("id_0").addEventListener("change", runSelectAll) ;
 
 // Select the button and form
 var button = d3.select("#sumbitButton");
@@ -22,6 +22,15 @@ document.getElementById("endDateSelector").value = endDate.toISODate();
 var stateList = getStateList(data);
 addCheckBoxList(stateList);
 
+
+// Function to toggle the select all in the checkbox list 
+function runSelectAll(){ 
+  let checkStatus = document.getElementById("id_0").checked ;
+  console.log(checkStatus); 
+  //checkboxes = d3.selectAll("checkbox").attr("checked",function() { if })
+}
+
+// Function to make the table based on the selection 
 function runEnter() {
   d3.event.preventDefault();
 
@@ -91,7 +100,7 @@ function getEndDate(data) {
 
 // Functions to make the list of states that are in the data file 
 function getStateList(data) {
-  var states = ["All States"];
+  var states = [];
   for (let i = 0; i < data.length; i++) {
     addState(states, data[i].state);
   }
