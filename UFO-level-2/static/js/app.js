@@ -20,25 +20,24 @@ document.getElementById("endDateSelector").value = endDate.toISODate();
 
 // make the list of states in the data
 var stateList = getStateList(data);
-addCheckBoxList(stateList); 
+addCheckBoxList(stateList);
 
 var checkedStateList = [];
 
-// Function to return the list of selected states 
-function getCheckedStates(){
-  let checkedStatesList = [];   
-  let test = document.getElementById("id_0") ;
+// Function to return the list of selected states
+function getCheckedStates() {
+  let checkedStatesList = [];
 
-  // loop over the list of states in the data file 
-  for ( let i = 0; i < stateList.length; i++){ 
+  // loop over the list of states in the data file
+  for (let i = 0; i < stateList.length; i++) {
     let id = `id_${i + 1}`;
-    let elem = document.getElementByID(id) ;
-    if (elem.checked){
+    let elem = document.getElementByID(id);
+    if (elem.checked) {
       checkedStatesList.push(stateList[i]);
       console.log(stateList[i]);
     }
   }
-  return checkedStatesList; 
+  return checkedStatesList;
 }
 
 // Function to toggle the select all in the checkbox list
@@ -53,7 +52,7 @@ function runSelectAll() {
 // Function to make the table based on the selections
 function runEnter() {
   d3.event.preventDefault();
-  checkedStateList.length = 0 ;
+  checkedStateList.length = 0;
 
   let start = document.getElementById("startDateSelector").value;
   let end = document.getElementById("endDateSelector").value;
@@ -61,22 +60,22 @@ function runEnter() {
   endDate = DateTime.fromISO(end);
 
   // filter the data by these dates
-  var filteredData = data.filter(filterByDate); 
-  
+  var filteredData = data.filter(filterByDate);
+
   // get the list of states from the checkboxes and filter
-  let selectAll = document.getElementById("id_0").checked ;
-  if (!selectAll){
-    for ( let i = 0; i < stateList.length; i++){ 
+  let selectAll = document.getElementById("id_0").checked;
+  if (!selectAll) {
+    for (let i = 0; i < stateList.length; i++) {
       const id = `id_${i + 1}`;
-      let elem = document.getElementById(id) ;
-      if (elem.checked){
+      let elem = document.getElementById(id);
+      if (elem.checked) {
         checkedStateList.push(stateList[i]);
       }
     }
   }
   var filterByStateData = filteredData;
-  if (!selectAll){ 
-    filterByStateData = filteredData.filter(filterByState); 
+  if (!selectAll) {
+    filterByStateData = filteredData.filter(filterByState);
   }
 
   // remove the existing rows in the table
@@ -97,15 +96,15 @@ function runEnter() {
   });
 }
 
-// Function to filter by state 
-function filterByState(report){ 
-  for (let i = 0; i < checkedStateList.length; i++){
-    if ( checkedStateList[i] === report.state) return true ;
+// Function to filter by state
+function filterByState(report) {
+  for (let i = 0; i < checkedStateList.length; i++) {
+    if (checkedStateList[i] === report.state) return true;
   }
   return false;
 }
 
-// Function to filter by dates 
+// Function to filter by dates
 function filterByDate(report) {
   var reportDate = DateTime.fromFormat(report.datetime, "M/d/yyyy");
   if (
